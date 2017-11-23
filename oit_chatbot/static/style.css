@@ -41,7 +41,15 @@ a {
   
 #usermsg {
     width:395px;
-    border:1px solid #ACD8F0; }
+    #border:1px solid #ACD8F0; 
+    text-align:left;
+}
+
+#botmsg {
+    widght:395px;
+    #border:1px solid #ACD8F0;
+    text-align:right;
+}
   
 #submit { width: 60px; }
   

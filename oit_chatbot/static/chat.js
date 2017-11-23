@@ -3,10 +3,13 @@ $(document).ready(function(){
    });
 
 $("#submitmsg").click(function(){	
-    var clientmsg = $("#usermsg").val();
+    var clientmsg = $("#boxmsg").val();
+    console.log(clientmsg);
+    $("#chatbox").append("<p id=usermsg>" + clientmsg + "</p>");
     $.post("/process_message", {text: clientmsg}, function(responseText) {
         console.log(responseText);
+        $("#chatbox").append("<p id=botmsg>"+responseText+"</p>");
     });	
-    $("#usermsg").attr("value", "");
+    $("#boxmsg").attr("value", "");
     return false;
 });
