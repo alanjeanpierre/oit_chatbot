@@ -1,0 +1,3 @@
+graft oit-chatbot/templates
+graft oit-chatbot/static
+include oit-chatbot/schema.sql
