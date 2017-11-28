@@ -62,7 +62,11 @@ def show_chat():
 
 @app.route('/process_message', methods=['POST'])
 def rudeness():
+    txt = request.form['text']
+    response = process(txt)
+    return response
+
+def process(txt):
     db = get_db()
-    text = request.form['text']
     cur = db.execute('select answer from knowledge order by random() limit 1')
-    return cur.fetchone()[0]
+    return 'You said: ' + txt + '<br/>I say: ' + cur.fetchone()[0]
