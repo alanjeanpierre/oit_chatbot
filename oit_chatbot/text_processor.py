@@ -9,8 +9,8 @@ NOUN_LIST = {
 def find_verb(sentence):
     pass
 
-def find_object(sentence):
-    objects = noun_phraser(sentence)
+def find_objects(sentence):
+    objects = noun_phraser(TextBlob(sentence))
     #objects = sentence.noun_phrases
     return objects
 
