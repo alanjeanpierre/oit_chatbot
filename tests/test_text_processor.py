@@ -31,5 +31,5 @@ def test_questions():
 
 def test_objects():
     for question, answer in qs.items():
-        obj = find_object(question.lower())
+        obj = find_objects(question.lower())
         assert obj == answer[1]
