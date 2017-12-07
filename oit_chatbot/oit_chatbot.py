@@ -67,6 +67,33 @@ def rudeness():
     response = process(txt)
     return response
 
+# Login Verification of User
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    # create dict of users
+    desc = cursor.description
+    col_names = [col[0] for col in desc]
+    data = [dict(zip(col_names, row)) for row in cursor.fetchall()]
+
+    error = None
+    if request.method == 'POST':
+        if not request.form['username'] in data.keys():
+            error = 'Invalid username'
+        elif request.form['password'] != data[request.form['username']]:
+            error = 'Invalid Password'
+        else:
+            session['logged_in'] = True
+            flash('You were logged in')
+            return redirect(url_for('show_chat'))
+    return render_template('login.html', error=error)
+
+#Logout Verification of User
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('You were logged out')
+    return redirect(url_for('show_chat'))
+
 def process(txt):
     #db = get_db()
     #cur = db.execute('select answer from knowledge order by random() limit 1')
