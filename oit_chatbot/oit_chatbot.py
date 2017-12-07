@@ -1,5 +1,5 @@
 # all the imports
-import os
+import os, sys
 import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
@@ -153,9 +153,11 @@ def add():
         qual = request.form['qual']
         answer = request.form['ans']
         pri = request.form['pl']
-        db = get_db
+        db = get_db()
         cur = db.cursor()
-        cur.execute("INSERT INTO knowledge VALUES (?, ?, ?, ?)", (top, qual, answer, pri))
+        cur.execute("INSERT INTO knowledge (topic, qualifier, answer, lvl) VALUES (?, ?, ?, ?)", (top, qual, answer, pri))
+        cur.close()
+        db.commit()
         return redirect(url_for('show_admin'))
     return render_template('add.html')
 
