@@ -71,18 +71,30 @@ def rudeness():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     # create dict of users
+    db = get_db()
+    cursor = db.execute('select * from users')
     desc = cursor.description
     col_names = [col[0] for col in desc]
-    data = [dict(zip(col_names, row)) for row in cursor.fetchall()]
+    rows = cursor.fetchall()
+    data = [dict(zip(col_names, row)) for row in rows]
 
+    data = {x['id'] : x['pwd'] for x in data}
+
+    print('before post')
+    print(data)
     error = None
     if request.method == 'POST':
+        print('after post')
         if not request.form['username'] in data.keys():
+            print('bad username')
             error = 'Invalid username'
         elif request.form['password'] != data[request.form['username']]:
+            print('bad password')
             error = 'Invalid Password'
         else:
+            print('We made it here')
             session['logged_in'] = True
+            session['username'] = request.form['username']
             flash('You were logged in')
             return redirect(url_for('show_chat'))
     return render_template('login.html', error=error)

@@ -20,7 +20,7 @@
           <div class="column one">
             
 
-            <form action="/login" method="POST">
+            <form action="{{url_for('login') }}" method="POST">
 
                                       <legend>
 	        <strong>
@@ -31,13 +31,13 @@
                                     
                           <div class="form-element-wrapper">
                 <label for="username">Admin User ID</label>
-                <input class="form-element form-field" id="username" name="j_username" type="text"
+                <input class="form-element form-field" id="username" name="username" type="text"
                 	value="">
               </div>
 
               <div class="form-element-wrapper">
                 <label for="password">Password</label>
-                <input class="form-element form-field" id="password" name="j_password" type="password" value="">
+                <input class="form-element form-field" id="password" name="password" type="password" value="">
               </div>
 
 	                  
