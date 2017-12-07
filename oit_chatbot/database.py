@@ -19,7 +19,7 @@ def find_question(db, noun_phrases):
                             (noun_phrases[-1]))
     
     if not answers:
-        raise LookupErorr('No answers for that question')
+        raise LookupError('No answers for that question')
     else:
         return answers[0][0]
     
