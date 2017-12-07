@@ -2,17 +2,46 @@
 <html>
 <head>
 <title>View Questions</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 </head>
 <body>
 
 <h1>View Current Questions</h1>
-{% for q in quest %}
-	<strong>ID:</strong> {{ q.ID }} <br>
-    <strong>Topic:</strong> {{ q.TOPIC }} <br>
-    <strong>Qualifier:</strong> {{ q.QUAL }} <br>
-    <strong>Answer:</strong> {{ q.ANS }} <br>
-    <strong>Priority Level:</strong> {{ q.PL }} <br>
-{% endfor %}
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Topic</th>
+		<th>Qualifier</th>
+		<th>Answer</th>
+		<th>Priority Level</th>
+	</tr>
+	{% for q in quest %}
+		<tr>
+			<td>{{ q.ID }} </td>
+    		<td>{{ q.TOPIC }} </td>
+    		<td>{{ q.QUAL }} </td>
+			<td>{{ q.ANS }} </td>
+    		<td>{{ q.PL }} </td>
+    	</tr>
+    {% endfor %}
+</table>
+
 
 
 
