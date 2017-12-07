@@ -4,6 +4,7 @@ import sqlite3
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 from oit_chatbot import text_processor
+from oit_chatbot import database
 
 app = Flask(__name__) # create the application instance :)
 app.config.from_object(__name__) # load config from this file , flaskr.py
@@ -111,16 +112,18 @@ def process(txt):
     #cur = db.execute('select answer from knowledge order by random() limit 1')
 
     noun_phrases = text_processor.find_objects(txt)
-    if not noun_phrases:
-        response = "wtf??"
-    elif len(noun_phrases) == 1:
-        topic = noun_phrases[0]
-        response = 'It looks like you\'re talking about ' + topic
-    else:
-        topic = noun_phrases[-1]
-        qualifier = ' '.join(noun_phrases[:-1])
-        response = 'It looks like you\'re talking about ' + topic + ', specifically the ' + qualifier
+    #if not noun_phrases:
+    #    response = "wtf??"
+    #elif len(noun_phrases) == 1:
+    #    topic = noun_phrases[0]
+    #    response = 'It looks like you\'re talking about ' + topic
+    #else:
+    #    topic = noun_phrases[-1]
+    #    qualifier = ' '.join(noun_phrases[:-1])
+    #    response = 'It looks like you\'re talking about ' + topic + ', specifically the ' + qualifier
 
+    response = database.find_question(noun_phrases)
+    
     return response + '. <br \>... idk what to tell you'
 
 #display the admin page
