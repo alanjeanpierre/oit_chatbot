@@ -122,7 +122,18 @@ def process(txt):
     #    qualifier = ' '.join(noun_phrases[:-1])
     #    response = 'It looks like you\'re talking about ' + topic + ', specifically the ' + qualifier
 
-    response = database.find_question(get_db(), noun_phrases)
+    try:
+        response = database.find_question(get_db(), noun_phrases)
+        return response
+    except LookupError as e:
+        session['misses'] = session.get('misses', 0) + 1
+        if session['misses'] == 5:
+            return 'I need to transfer you to my superior, Mr. Lake'
+        if session['misses'] > 5:
+            return 'Really, I can\'t help you anymore'
+        
+        return '... idk what to tell you'
+    
     
     return response + '. <br \>... idk what to tell you'
 
