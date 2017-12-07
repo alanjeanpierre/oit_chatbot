@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<!-- node: sso-prod-3 -->
+<!-- environment: sso-prod -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UTSA Login</title>
+  <link rel="stylesheet" type="text/css" href="https://sso.it.utsa.edu/idp/css/main.css">
+</head>
+<body>
+    <div class="wrapper">
+      <div class="container">
+        <header>
+          <img src="https://sso.it.utsa.edu/idp/images/UTSA-stacked-leftjustOrange.png" alt="UTSA Logo">
+        </header>
+
+        <div class="content">
+<!-- end header -->
+          <div class="column one">
+            
+
+            <form action="/login" method="POST">
+
+                                      <legend>
+	        <strong>
+                Admin Login
+		</strong>
+                                  <p style="font-size: 80%;"><em></em></p>
+                              </legend>
+                                    
+                          <div class="form-element-wrapper">
+                <label for="username">Admin User ID</label>
+                <input class="form-element form-field" id="username" name="j_username" type="text"
+                	value="">
+              </div>
+
+              <div class="form-element-wrapper">
+                <label for="password">Password</label>
+                <input class="form-element form-field" id="password" name="j_password" type="password" value="">
+              </div>
+
+	                  
+	      
+                          <div class="form-element-wrapper">
+                <button class="form-element form-button" type="submit" name="_eventId_proceed"
+                    onClick="this.childNodes[0].nodeValue='Logging in, please wait...'"
+                    >Login</button>
+              </div>
+            
+                        </form>
+
+            
+          </div>
+          <div class="column two">
+            <ul class="list list-help">
+                              <li class="list-help-item"><a href="http://passphrase.utsa.edu/" target="_blank"><span class="item-marker">&rsaquo;</span> Forgot your password?</a></li>
+                            <li class="list-help-item"><a href="http://oitconnect.utsa.edu/" target="_blank"><span class="item-marker">&rsaquo;</span> Need Help?</a></li>
+            </ul>
+          </div>
+	  <div class="column three">
+	     <hr/>
+	     <p>
+	     </p>
+          </div>
+<!-- begin footer -->
+        </div>
+      </div>
+
+      <footer>
+        <div class="container container-footer">
+          <p class="footer-text">&copy;Team Douggglas <p> </p>	  	  </p>
+        </div>
+      </footer>
+    </div>
+    
+ </body>
+</html>
