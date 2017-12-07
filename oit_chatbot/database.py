@@ -1,9 +1,6 @@
 import sqlite3
-from oit_chatbot import oit_chatbot
 
-def find_question(noun_phrases):
-    
-    db = oit_chatbot.get_db()
+def find_question(db, noun_phrases):
     
     answers = []
     

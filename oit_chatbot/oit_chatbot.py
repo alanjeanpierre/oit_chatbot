@@ -122,7 +122,7 @@ def process(txt):
     #    qualifier = ' '.join(noun_phrases[:-1])
     #    response = 'It looks like you\'re talking about ' + topic + ', specifically the ' + qualifier
 
-    response = database.find_question(noun_phrases)
+    response = database.find_question(get_db(), noun_phrases)
     
     return response + '. <br \>... idk what to tell you'
 
