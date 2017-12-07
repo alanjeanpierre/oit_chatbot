@@ -131,7 +131,7 @@ def process(txt):
 def show_admin():
     return render_template('show_admin.html')
 
-@app.route('/add', methods = 'GET', 'POST')
+@app.route('/add', methods = ['GET', 'POST'])
 def add():
     top = request.form['topic']
     qual = request.form['qual']
