@@ -18,14 +18,10 @@ create table logs (
 -- ex 2: topic=due date, qualifier=financial aid
 -- WHICH|WHOSE $topic
 create table knowledge (
-	id int primary key,
+	id integer primary key AUTOINCREMENT,
 	topic text,
     qualifier text,
-    what text,
-    where text,
-    how text,
-    when text,
-    who text
+    answer text,
 	lvl int -- priviledge level
 );
 
