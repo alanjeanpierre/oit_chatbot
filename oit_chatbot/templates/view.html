@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>View Questions</title>
+</head>
+<body>
+
+<h1>View Current Questions</h1>
+{% for q in quest %}
+	<strong>ID:</strong> {{ q.ID }} <br>
+    <strong>Topic:</strong> {{ q.TOPIC }} <br>
+    <strong>Qualifier:</strong> {{ q.QUAL }} <br>
+    <strong>Answer:</strong> {{ q.ANS }} <br>
+    <strong>Priority Level:</strong> {{ q.PL }} <br>
+{% endfor %}
+
+
+
+</body>
+</html>

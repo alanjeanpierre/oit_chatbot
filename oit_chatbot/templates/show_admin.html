@@ -5,8 +5,15 @@
 </head>
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph</p>
+<h1>Admin Page</h1>
+<nav>
+	<ul>
+		<p class="add"><a href="{{ url_for('add') }}">Add</a></p>
+		<p class="view"><a href="{{ url_for('view') }}">View</a></p>
+	</ul>
+</nav>
+
+
 
 </body>
 </html>
