@@ -8,27 +8,23 @@
 <h1>Update an Existing Question</h1>
 <h2>PPLeeease Change the SEction YOUUUU ned to UPDATEEEEDED</h2>
 
-<!--<form method="POST">
+<p>ID: {{ q.ID }}</p>
+<form method="POST">
   Topic:<br>
-  <input type="text" name="topic">
+  <input type="text" name="topic" value="{{ q.TOPIC }}">
   <br>
   Qualifier:<br>
-  <input type="text" name="qual">
+  <input type="text" name="qual" value="{{q.QUAL}}">
   <br>
   Answer:<br>
-  <input type="text" name="ans">
+  <input type="text" name="ans" value="{{q.ANS}}">
   <br>
   Priority Level:<br>
-  <input type="text" name="pl">
+  <input type="text" name="pl" value="{{q.PL}}">
   <br><br>
   <input type="button" value="Cancel" onclick="javascript:history.back();return false;"/>
   <input type="submit" value="Submit">
-</form> -->
-<p>ID: {{i}}</p>
-<p>Topic: {{ t }} </p>
-<p>Qualifier: {{q}}</p>
-<p>Answer: {{an}}</p>
-<p>Priority Level: {{pl}}</p>
+</form>
 
 </body>
 </html>

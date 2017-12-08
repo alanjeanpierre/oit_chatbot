@@ -193,22 +193,26 @@ def view():
         return render_template('view.html', quest = questions)
 
 # allow the admin to edit an entry
-@app.route('/edit', methods = ['GET', 'POST'])
+@app.route('/edit/', methods = ['GET', 'POST'])
 def edit():
     """Edit a question in the knowledge database"""
+    
     if request.method == 'POST':
-        i = request.form['id']
-        top = request.form['topic']
-        qul = request.form['qual']
-        a = request.form['ans']
-        p = request.form['pl']
+        pass
+    else:
+        id = request.args['id']
         db = get_db()
         cursor = db.cursor()
-        cursor.execute('UPDATE knowledge SET topic = ?, qualifier = ?, answer = ?, lvl = ? WHERE id = ?', (top, qul, a, p, i))
-        cursor.close()
-        db.commit()
-        return (i = i, t = top, q = qul, an = a, pl = p)
-    return render_template('edit.html')
+        cursor.execute('select * from knowledge where id = ?', (id,))
+        row = cursor.fetchone()
+        i, t, q, an, pl = row
+        print(i, t, q, an, pl)
+        return render_template('edit.html', q = dict(ID = i, 
+                                                    TOPIC = t, 
+                                                    QUAL = q, 
+                                                    ANS = an, 
+                                                    PL = pl) 
+                            )
 
 # display statistical information for the admin
 @app.route('/stats')

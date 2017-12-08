@@ -41,12 +41,8 @@ tr:nth-child(even) {
 			<td>{{ q.ANS }} </td>
     		<td>{{ q.PL }} </td>
             <td><form method="POST"><input type="hidden" id="q_id" name="id" value="{{ q.ID }}"><input type="submit" value="Delete"></form></td>
-            <td><form action="{{ url_for('edit') }}" method = 'POST'>
-                <input type="hidden" name="id" value="{{ q.ID }}">
-                <input type="hidden" name="top" value="{{ q.TOPIC }}">
-                <input type="hidden" name="qual" value="{{ q.QUAL }}">
-                <input type="hidden" name="ans" value="{{ q.ANS }}">
-                <input type="hidden" name="pl" value="{{ q.PL }}">
+            <td><form action="{{ url_for('edit') }}" method = 'GET'>
+                <input type="hidden" id="q_id" name="id" value="{{ q.ID }}" />
                 <input type="submit" value="Edit">
             </form>
             </td>
