@@ -130,7 +130,10 @@ def show_admin():
 
 @app.route('/add', methods = 'GET', 'POST')
 def add():
-    print("You made it here")
+    top = request.form['topic']
+    qual = request.form['qual']
+    answer = request.form['ans']
+    pri = request.form['pl']
     return render_template('add.html')
 
 @app.route('/view')
