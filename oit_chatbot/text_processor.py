@@ -34,3 +34,35 @@ def noun_phraser(sentence):
     if nouns:
         noun_phrases.append(' '.join(nouns))
     return noun_phrases
+
+if __name__ == '__main__':
+    qs = [
+        'Where is blackboard?',
+        'How do I upload grades?',
+        'When is the due date for financial aid?', 
+        'When is the due date for tuition?', 
+        'When is the last day to drop classes?', 
+        'When are my final exams?',
+        'What is the phone number for tech support?', 
+        'Where is Dr. Niu\'s office?', 
+        'What are Dr. Niu\'s office hours?', 
+        'What is Dr. Niu\'s phone number?', 
+        'What is Dr. Niu\'s email address?', 
+        'Where is degreeworks?',
+        'degreeworks',
+        'dr niu\' office', 
+        'where\'s dr. nius office',  
+        'How do I register for classes?',
+        ]
+        
+    for q in qs:
+        print(q)
+        t = TextBlob(q)
+        for w in t.pos_tags:
+            print('{:10s}'.format(w[0]), end=' ')
+        print()
+        for w in t.pos_tags:
+            print('{:10s}'.format(w[1]), end=' ')
+        print()
+        print(noun_phraser(t))
+        print()
