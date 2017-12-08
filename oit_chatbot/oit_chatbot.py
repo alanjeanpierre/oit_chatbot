@@ -128,4 +128,14 @@ def process(txt):
 def show_admin():
     return render_template('show_admin.html')
 
-#@app.route('/add')
+@app.route('/add')
+def add():
+    print("You made it here")
+
+@app.route('/view')
+def view():
+    db = get_db()
+    cursor = db.execute('select * from knowledge')
+    questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
+    dp.close()
+    return render_template('view.html', quest = questions)
