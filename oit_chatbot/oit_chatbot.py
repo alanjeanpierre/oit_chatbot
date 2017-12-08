@@ -149,6 +149,10 @@ def add():
         qual = request.form['qual']
         answer = request.form['ans']
         pri = request.form['pl']
+        db = get_db
+        cur = db.cursor()
+        cur.execute("INSERT INTO knowledge VALUES (?, ?, ?, ?)", (top, qual, answer, pri))
+        return redirect(url_for('add'))
     return render_template('add.html')
 
 @app.route('/view')
