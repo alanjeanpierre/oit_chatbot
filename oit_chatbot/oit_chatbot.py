@@ -152,7 +152,7 @@ def add():
         db = get_db
         cur = db.cursor()
         cur.execute("INSERT INTO knowledge VALUES (?, ?, ?, ?)", (top, qual, answer, pri))
-        return redirect(url_for('add'))
+        return redirect(url_for('show_admin'))
     return render_template('add.html')
 
 @app.route('/view')
