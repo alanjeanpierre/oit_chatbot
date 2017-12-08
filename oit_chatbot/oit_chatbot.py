@@ -26,6 +26,9 @@ def connect_db():
     return rv
 
 def init_db():
+    """Initialize database with various sql statements.
+    Specifically loads the tables, knowledgebase and admin users
+    """
     db = get_db()
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
@@ -61,6 +64,7 @@ def close_db(error):
 
 @app.route('/')
 def show_chat():
+    """Shows the main chat page"""
     #db = get_db()
     #cur = db.execute('select title, text from entries order by id desc')
     #entries = cur.fetchall()
@@ -68,6 +72,7 @@ def show_chat():
 
 @app.route('/process_message', methods=['POST'])
 def rudeness():
+    """Accepts input from the chatpage and returns a response"""
     txt = request.form['text']
     response = process(txt)
     return response
@@ -75,6 +80,7 @@ def rudeness():
 # Login Verification of User
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """Login page and login logic for the admin portal"""
     # create dict of users
     db = get_db()
     cursor = db.execute('select * from users')
@@ -112,6 +118,9 @@ def logout():
     return redirect(url_for('show_chat'))
 
 def process(txt):
+    """Queries database for an answer and keeps a tally of missed answers.
+    After 5 missed topics, it redirects to live support
+    """
     #db = get_db()
     #cur = db.execute('select answer from knowledge order by random() limit 1')
 
@@ -149,6 +158,7 @@ def show_admin():
 # allow admin to add new FAQ
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
+    """Add question to the database"""
     if request.method == 'POST':
         top = request.form['topic']
         qual = request.form['qual']
@@ -165,6 +175,7 @@ def add():
 # display the FAQ's in the database
 @app.route('/view')
 def view():
+    """View the questions in the database"""
     db = get_db()
     cursor = db.execute('select * from knowledge')
     questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
@@ -174,6 +185,7 @@ def view():
 # allow the admin to remove an entry
 @app.route('/delete', methods = ['GET', 'POST'])
 def delete():
+    """Delete questions from the database"""
     if request.method == 'POST':
         top = request.form['topic']
         qual = request.form['qual']
@@ -181,9 +193,11 @@ def delete():
         pri = request.form['pl']
         return redirect(url_for('view'))
     return render_template('delete.html')
+
 # allow the admin to edit an entry
 @app.route('/edit', methods = ['GET', 'POST'])
 def edit():
+    """Edit a question in the knowledge database"""
     if request.method == 'POST':
         return redirect(url_for('view'))
     return render_template('edit.html')

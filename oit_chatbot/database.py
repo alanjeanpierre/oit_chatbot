@@ -1,6 +1,19 @@
 import sqlite3
 
 def find_question(db, noun_phrases):
+    """Locates relevant question in the database based on the noun phrases
+
+    Args:
+        db (sqlite3 database) - database connection to search in
+        noun_phrases (list of str) - noun phrases
+    
+    Returns:
+        str - First response in the sql database that matches the noun_phrases
+    
+    Raises:
+        LookupError - On no noun phrases or no relevant row in the database
+
+    """
     
     answers = []
     print(noun_phrases)
