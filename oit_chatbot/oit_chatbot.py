@@ -128,9 +128,10 @@ def process(txt):
 def show_admin():
     return render_template('show_admin.html')
 
-@app.route('/add')
+@app.route('/add', methods = 'GET', 'POST')
 def add():
     print("You made it here")
+    return render_template('add.html')
 
 @app.route('/view')
 def view():
