@@ -124,6 +124,7 @@ def process(txt):
     return response + '. <br \>... idk what to tell you'
 
 #display the admin page
+@app.route('/admin')
 def show_admin():
     return render_template('show_admin.html')
 
