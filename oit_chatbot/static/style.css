@@ -7,15 +7,28 @@ body {
   
 form, p, span {
     margin:0;
-    padding:0; }
+    padding:0; 
+    color: #FF9900}
   
-input { font:12px arial; }
+input { 
+    font:12px arial; 
+    margin: 10px 0;
+    padding: 14px 20px;
+    border-radius: 6px;
+    box-sizing: border-box; }
+
+input[type:text]:focus {
+    background-color: lightblue;
+}
   
 a {
     color:#0000FF;
-    text-decoration:none; }
+    text-decoration:none;
+    display: inline-block;
+    padding: 14px 25px;
+    text-align: center; }
   
-    a:hover { text-decoration:underline; }
+a:hover { text-decoration:underline; }
   
 #wrapper, #loginform {
     margin:0 auto;
@@ -26,7 +39,7 @@ a {
   
 #loginform { padding-top:18px; }
   
-    #loginform p { margin: 5px; }
+#loginform p { margin: 5px; }
   
 #chatbox {
     text-align:left;

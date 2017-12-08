@@ -1,6 +1,9 @@
 drop table if exists users;
 drop table if exists logs;
 drop table if exists knowledge;
+
+-- id is username
+-- pwd is password for username
 create table users (
 	id text primary key,
 	pwd text not null,

@@ -141,11 +141,12 @@ def process(txt):
     
     return response + '. <br \>... idk what to tell you'
 
-#display the admin page
+# display the admin page
 @app.route('/admin')
 def show_admin():
     return render_template('show_admin.html')
 
+# allow admin to add new FAQ
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     if request.method == 'POST':
@@ -161,6 +162,7 @@ def add():
         return redirect(url_for('show_admin'))
     return render_template('add.html')
 
+# display the FAQ's in the database
 @app.route('/view')
 def view():
     db = get_db()
@@ -168,3 +170,48 @@ def view():
     questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
     db.close()
     return render_template('view.html', quest = questions)
+
+# allow the admin to remove an entry
+@app.route('/delete', methods = ['GET', 'POST'])
+def delete():
+    if request.method == 'POST':
+        top = request.form['topic']
+        qual = request.form['qual']
+        answer = request.form['ans']
+        pri = request.form['pl']
+        return redirect(url_for('view'))
+    return render_template('delete.html')
+# allow the admin to edit an entry
+@app.route('/edit', methods = ['GET', 'POST'])
+def edit():
+    if request.method == 'POST':
+        return redirect(url_for('view'))
+    return render_template('edit.html')
+
+# display statistical information for the admin
+@app.route('/stats')
+def stats():
+    return render_template('stats.html')
+
+# allow admin to add admins
+@app.route('/addAdmin', methods = ['GET', 'POST'])
+def addAdmin():
+    if request.method == 'POST':
+        return redirect(url_for('show_admin'))
+    return render_template('addAdmin.html')
+
+# allow admin to delete admins
+@app.route('/delAdmin', methods = ['GET', 'POST'])
+def delAdmin():
+    if request.method == 'POST':
+        return redirect(url_for('viewAdmin'))
+    return render_template('delAdmin.html')
+
+# display all admins
+@app.route('/viewAdmin')
+def viewAdmin():
+    db = get_db
+    cursor = db.execute('select * from users')
+    users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
+    db.close()
+    return render_template('viewAdmin.html', users = users)

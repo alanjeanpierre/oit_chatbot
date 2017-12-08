@@ -5,15 +5,36 @@
 </head>
 <body>
 
-<h1>Admin Page</h1>
+<h1>Home Page</h1>
+<br>
+<h2>Manage FAQ's</h2>
 <nav>
 	<ul>
-		<p class="add"><a href="{{ url_for('add') }}">Add A Question</a></p>
 		<p class="view"><a href="{{ url_for('view') }}">View Questions</a></p>
+		<p class="edit"><a href="{{ url_for('edit') }}">Edit a Question</a></p>
+		<p class="add"><a href="{{ url_for('add') }}">Add A Question</a></p>
+		<p class="delete"><a href="{{ url_for('delete') }}">Delete A Question</a></p>
+		<p class="stats"><a href="{{ url_for('stats') }}">Statistical Analysis</a></p>
 	</ul>
 </nav>
+<h2>Manage Admin's</h2>
+<nav>
+	<ul>
+		<p class="addAdmin"><a href="{{ url_for('addAdmin') }}">Add an Admin</a></p>
+		<p class="delAdmin"><a href="{{ url_for('delAdmin') }}">Remove an Admin</a></p>
+		<p class="viewAdmin"><a href="{{ url_for('viewAdmin') }}">View All Admins</a></p>
+	</ul>
+</nav>
+<section>
+	<img src="https://static.pexels.com/photos/4620/snow-landscape-trees-winter.jpg" alt="Winter is Coming">
+</section>
+
+<aside>
+	<p>The Sassbot 3000 was designed by a group of Software Engineering students at the University of Texas at San Antonio. The Sassbot 3000 was created for you, the admin. It was designed to improve your day-to-day life and ease of living. The group of students who worked on this project suffered great loss to provide you with the finished product you now see before you. Everytime you use the Sassbot 3000, we hope you think of them and feel great sadness for their loss.</p>
+</aside>>
 
 
 
+<footer><p>Any use of this website, without consent of the creators, is theft and will be treated as such. In otherwords, just ask.</p></footer>
 </body>
 </html>

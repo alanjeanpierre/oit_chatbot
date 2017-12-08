@@ -8,7 +8,11 @@
  
 <div id="wrapper">
     <div id="menu">
-        <p class="welcome">Welcome, {{ session.get('username') }}<b></b></p>
+        {% if session.get('username') %} 
+            <p class="welcome">Welcome, {{ session.get('username') }}<b></b></p>
+        {% else %}
+            <p class="welcome">Welcome!<b></b></p>
+        {% endif %}
         <p class="login"><a id="enter" href="{{ url_for('login') }}">Login</a></p>
         <p class="logout"><a id="exit" href="#">Exit Chat</a></p>
         <div style="clear:both"></div>
