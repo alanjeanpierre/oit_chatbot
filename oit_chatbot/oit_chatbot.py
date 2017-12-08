@@ -96,7 +96,7 @@ def login():
             session['logged_in'] = True
             session['username'] = request.form['username']
             flash('You were logged in')
-            return redirect(url_for('show_chat'))
+            return redirect(url_for('show_admin'))
     return render_template('login.html', error=error)
 
 #Logout Verification of User
@@ -122,3 +122,9 @@ def process(txt):
         response = 'It looks like you\'re talking about ' + topic + ', specifically the ' + qualifier
 
     return response + '. <br \>... idk what to tell you'
+
+#display the admin page
+def show_admin():
+    return render_template('show_admin.html')
+
+#@app.route('/add')
