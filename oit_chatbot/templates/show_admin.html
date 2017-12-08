@@ -6,6 +6,11 @@
 <body>
 
 <h1>Home Page</h1>
+<nav>
+        <ul>
+                <p class="chat"><a href="{{ url_for('show_chat') }}">Chatbot</a></p>
+        </ul>
+</nav>
 <br>
 <h2>Manage FAQ's</h2>
 <nav>
@@ -13,7 +18,6 @@
 		<p class="view"><a href="{{ url_for('view') }}">View Questions</a></p>
 		<p class="edit"><a href="{{ url_for('edit') }}">Edit a Question</a></p>
 		<p class="add"><a href="{{ url_for('add') }}">Add A Question</a></p>
-		<p class="delete"><a href="{{ url_for('delete') }}">Delete A Question</a></p>
 		<p class="stats"><a href="{{ url_for('stats') }}">Statistical Analysis</a></p>
 	</ul>
 </nav>
@@ -26,7 +30,7 @@
 	</ul>
 </nav>
 <section>
-	<img src="https://static.pexels.com/photos/4620/snow-landscape-trees-winter.jpg" alt="Winter is Coming">
+	<img src="https://static.pexels.com/photos/4620/snow-landscape-trees-winter.jpg" alt="Winter is Coming" width="700" height="300">
 </section>
 
 <aside>

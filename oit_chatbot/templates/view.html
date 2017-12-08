@@ -30,6 +30,7 @@ tr:nth-child(even) {
 		<th>Qualifier</th>
 		<th>Answer</th>
 		<th>Priority Level</th>
+        <th>Remove</th>
 	</tr>
 	{% for q in quest %}
 		<tr>
@@ -38,9 +39,15 @@ tr:nth-child(even) {
     		<td>{{ q.QUAL }} </td>
 			<td>{{ q.ANS }} </td>
     		<td>{{ q.PL }} </td>
+            <td><form method="POST"><input type="hidden" id="q_id" name="id" value="{{ q.ID }}"><input type="submit" value="Delete"></form></td>
+
     	</tr>
     {% endfor %}
 </table>
-
+<nav>
+    <ul>
+        <p class="chat"><a href="{{ url_for('show_admin') }}">Admin Home Page</a></p>
+    </ul>
+</nav>
 </body>
 </html>
