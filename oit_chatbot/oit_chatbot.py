@@ -144,5 +144,5 @@ def view():
     db = get_db()
     cursor = db.execute('select * from knowledge')
     questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
-    dp.close()
+    db.close()
     return render_template('view.html', quest = questions)
