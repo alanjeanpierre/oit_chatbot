@@ -20,7 +20,7 @@ def find_question(db, noun_phrases):
     if not noun_phrases:
         raise LookupError('No noun phrases found')
     elif len(noun_phrases) == 1:
-        cursor = db.execute('select answer from knowledge where topic = ?', 
+        cursor = db.execute('select answer from knowledge where topic = ? and qualifier is NULL', 
                             (noun_phrases))
         answers = cursor.fetchall()
     else:

@@ -1,10 +1,13 @@
 from textblob import TextBlob
+from textblob.blob import Word
+import string
 
 """List of non-standard "nouns" we want to target"""
 NOUN_LIST = {
     'blackboard',
     'asap',
     'degreeworks',
+    'oit',
 }
 
 def find_verb(sentence):
@@ -53,7 +56,7 @@ def noun_phraser(sentence):
             nouns = []
         if part_of_speech.startswith(('NN', 'JJ', )) or stdword in NOUN_LIST:
             nouning = True
-            nouns.append(word)
+            nouns.append(stdword)
     if nouns:
         noun_phrases.append(' '.join(nouns))
     return noun_phrases
@@ -62,8 +65,17 @@ def standardize_word(word):
     """Returns standard form of a word, accounting for typos,
     plurals, synonyms, case, and any other form"""
 
-    # lol jk
-    return word.lower()
+
+    # This doens't work
+    # corrects things like 'tuition' to 'suction'
+    # word = word.correct()
+
+    # finds the root of the word
+    word = word.lemma
+    
+    #removes punctuation and case
+    word = word.lower().translate(str.maketrans('', '', string.punctuation)) 
+    return word
 
 if __name__ == '__main__':
     qs = [
@@ -80,8 +92,8 @@ if __name__ == '__main__':
         'What is Dr. Niu\'s email address?', 
         'Where is degreeworks?',
         'degreeworks',
-        'dr niu\' office', 
-        'where\'s dr. nius office',  
+        'dr niu\'s office', 
+        'where\'s dr. niu\'s office',  
         'How do I register for classes?',
         ]
         
@@ -94,5 +106,6 @@ if __name__ == '__main__':
         for w in t.pos_tags:
             print('{:10s}'.format(w[1]), end=' ')
         print()
-        print(noun_phraser(t))
+        nouns = noun_phraser(t)
+        print(nouns)
         print()
