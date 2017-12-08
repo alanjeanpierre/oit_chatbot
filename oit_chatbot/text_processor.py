@@ -46,16 +46,24 @@ def noun_phraser(sentence):
     noun_phrases = []
     nouns = []
     for word, part_of_speech in sentence.pos_tags:
-        if nouning and not (part_of_speech.startswith(('NN', 'JJ', )) or word.lower() in NOUN_LIST):
+        stdword = standardize_word(word)
+        if nouning and not (part_of_speech.startswith(('NN', 'JJ', )) or stdword in NOUN_LIST):
             nouning = False
             noun_phrases.append(' '.join(nouns))
             nouns = []
-        if part_of_speech.startswith(('NN', 'JJ', )) or word.lower() in NOUN_LIST:
+        if part_of_speech.startswith(('NN', 'JJ', )) or stdword in NOUN_LIST:
             nouning = True
             nouns.append(word)
     if nouns:
         noun_phrases.append(' '.join(nouns))
     return noun_phrases
+
+def standardize_word(word):
+    """Returns standard form of a word, accounting for typos,
+    plurals, synonyms, case, and any other form"""
+
+    # lol jk
+    return word.lower()
 
 if __name__ == '__main__':
     qs = [
