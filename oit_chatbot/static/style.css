@@ -84,14 +84,15 @@ input[type=submit]:hover{
 }
 
 li{
-    float: left;
+    display: inline;
+    float: center;
 }
   
 li a:link, li a:visited {
     background-color: #F7E7D4;
     color:#FB8604;
     text-decoration:none;
-    display: block;
+    display: inline-block;
     padding: 14px 16px;
     text-align: center; 
     float: center;
