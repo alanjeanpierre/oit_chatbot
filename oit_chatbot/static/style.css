@@ -39,7 +39,7 @@ div {
     float: center;
     font: 14px Georgia;
     border-radius: 6px;
-    padding: 14px 20px;
+    padding: 14px 16spx;
 }
   
 p, span {
@@ -63,7 +63,7 @@ input {
     font:12px Georgia;
     color: #091834; 
     margin: 10px 0;
-    padding: 14px 20px;
+    padding: 14px 16px;
     border-radius: 6px;
     box-sizing: border-box; }
 
@@ -76,7 +76,7 @@ a:link, a:visited {
     color:#1258DC;
     text-decoration:none;
     display: inline-block;
-    padding: 14px 20px;
+    padding: 14px 16xpx;
     text-align: center; 
     float: center;
 }
