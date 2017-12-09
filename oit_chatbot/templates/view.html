@@ -31,6 +31,7 @@ tr:nth-child(even) {
 		<th>Answer</th>
 		<th>Priority Level</th>
         <th>Remove</th>
+        <th>Edit</th>
 	</tr>
 	{% for q in quest %}
 		<tr>
@@ -46,7 +47,7 @@ tr:nth-child(even) {
                 <input type="hidden" name="qual" value="{{ q.QUAL }}">
                 <input type="hidden" name="ans" value="{{ q.ANS }}">
                 <input type="hidden" name="pl" value="{{ q.PL }}">
-                <input type="submit" name="Edit">
+                <input type="submit" value="Edit">
             </form>
             </td>
 

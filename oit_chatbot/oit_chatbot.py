@@ -207,7 +207,7 @@ def edit():
         cursor.execute('UPDATE knowledge SET topic = ?, qualifier = ?, answer = ?, lvl = ? WHERE id = ?', (top, qul, a, p, i))
         cursor.close()
         db.commit()
-        return redirect(url_for('view'))
+        return (i = i, t = top, q = qul, an = a, pl = p)
     return render_template('edit.html')
 
 # display statistical information for the admin
