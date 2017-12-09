@@ -192,24 +192,6 @@ def view():
         db.close()
         return render_template('view.html', quest = questions)
 
-# allow the admin to remove an entry
-#@app.route('/delete', methods = ['GET', 'POST'])
-#def delete():
-#    """Delete questions from the database"""
-#    if request.method == 'POST':
-#        id = request.form['value']
-#        db = get_db()
-#        cursor = db.cursor()
-#       cursor.execute("DELETE FROM knowledge WHERE id = ?", (id,))
-#        cursor.close()
-#       db.commit()
-#      return redirect(url_for('view'))
-#   db = get_db()
-#   cursor = db.execute('select * from knowledge')
-#   questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
-#   db.close()
-#   return render_template('delete.html', quest = questions)
-
 # allow the admin to edit an entry
 @app.route('/edit', methods = ['GET', 'POST'])
 def edit():
