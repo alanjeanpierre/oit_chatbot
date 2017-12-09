@@ -81,8 +81,8 @@ def rudeness():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login page and login logic for the admin portal"""
-    if session['logged_in']:
-        return redirect(url_for('logout'))
+    #if session['logged_in']:
+      #  return redirect(url_for('logout'))
 
     # create dict of users
     db = get_db()
