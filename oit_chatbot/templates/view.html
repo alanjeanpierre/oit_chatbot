@@ -15,6 +15,7 @@
 		<th>Qualifier</th>
 		<th>Answer</th>
 		<th>Priority Level</th>
+		<th>Times Referenced</th>
         <th>Remove</th>
         <th>Edit</th>
 	</tr>
@@ -24,7 +25,8 @@
     		<td>{{ q.TOPIC }} </td>
     		<td>{{ q.QUAL }} </td>
 			<td>{{ q.ANS }} </td>
-    		<td>{{ q.PL }} </td>
+			<td>{{ q.PL }} </td>
+			<td>{{ q.CT }} </td>
             <td><form method="POST"><input type="hidden" id="q_id" name="id" value="{{ q.ID }}"><input type="submit" value="Delete"></form></td>
             <td><form action="{{ url_for('edit') }}" method = 'GET'>
                 <input type="hidden" id="q_id" name="id" value="{{ q.ID }}" />

@@ -27,7 +27,7 @@ create table knowledge (
 	topic text,
     qualifier text,
     answer text,
-	lvl int, -- priviledge level
-	count int -- keep track of how many times a question is asked 
+	lvl int DEFAULT 0, -- priviledge level
+	count int DEFAULT 0 -- keep track of how many times a question is asked 
 );
 
