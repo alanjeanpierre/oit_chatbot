@@ -43,6 +43,7 @@ div {
     float: center;
     font: 14px;
     font-family: "Georgia", serif;
+    border-radius: 5px;
 }
   
 p, span {
@@ -57,9 +58,10 @@ form{
     float: center;
     background-color: #FB8604;
     color: #144EB8;
-    padding: 14px 20px;
+    padding: 14px 16px;
     font: 14px;
     font-family: "Georgia", serif;
+    border-radius: 4px;
 }
   
 input { 
@@ -68,18 +70,40 @@ input {
     color: #091834; 
     margin: 10px 0;
     padding: 14px 16px;
-    box-sizing: border-box; }
+    box-sizing: border-box; 
+    width: 100%;
+    display: inline-block;
+    border-radius: 4px;
+}
 
 input[type:text]:focus {
     background-color: #1258DC;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #144EB8;
+    color :#F7E7D4;
+    margin: 10px 0;
+    padding: 14px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input[type=submit]:hover{
+    background-color: #051739;
+}
+
+li{
+    float: left;
 }
   
 li a:link, li a:visited {
     background-color: #F7E7D4;
     color:#FB8604;
     text-decoration:none;
-    display: inline-block;
-    padding: 14px 16xpx;
+    display: block;
+    padding: 14px 16px;
     text-align: center; 
     float: center;
 }
