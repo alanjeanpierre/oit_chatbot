@@ -9,5 +9,22 @@
 	<p>This page will display graphs based on the FAQ for the admin to review and adjust accordingly.</p>
 	<img src="https://static.pexels.com/photos/355747/pexels-photo-355747.jpeg" alt="The Clmb" width="700" height="500">
 	<br>
+	<h1>View Missed Questions</h1>
+	<div style="overflow-x: auto">
+	<table>
+		<tr>
+			<th>Topic</th>
+			<th>Qualifier</th>
+			<th>Times Referenced</th>
+		</tr>
+		{% for q, ct in quest.items() %}
+			<tr>
+				<td>{{ q[0] }} </td>
+				<td>{{ q[1] }} </td>
+				<td>{{ ct }} </td>
+			</tr>
+		{% endfor %}
+	</table>
+	</div>
 </body>
 </html>
