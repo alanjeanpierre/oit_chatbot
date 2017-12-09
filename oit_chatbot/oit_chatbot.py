@@ -116,6 +116,8 @@ def login():
 @app.route('/logout')
 def logout():
     session.pop('logged_in', None)
+    session.pop('misses', None)
+    session.pop('username', None)
     flash('You were logged out')
     return redirect(url_for('show_chat'))
 
@@ -123,19 +125,8 @@ def process(txt):
     """Queries database for an answer and keeps a tally of missed answers.
     After 5 missed topics, it redirects to live support
     """
-    #db = get_db()
-    #cur = db.execute('select answer from knowledge order by random() limit 1')
-
+    
     noun_phrases = text_processor.find_objects(txt)
-    #if not noun_phrases:
-    #    response = "wtf??"
-    #elif len(noun_phrases) == 1:
-    #    topic = noun_phrases[0]
-    #    response = 'It looks like you\'re talking about ' + topic
-    #else:
-    #    topic = noun_phrases[-1]
-    #    qualifier = ' '.join(noun_phrases[:-1])
-    #    response = 'It looks like you\'re talking about ' + topic + ', specifically the ' + qualifier
 
     try:
         response = database.find_question(get_db(), noun_phrases)
@@ -171,11 +162,7 @@ def add():
         qual = request.form['qual']
         answer = request.form['ans']
         pri = request.form['pl']
-        db = get_db()
-        cur = db.cursor()
-        cur.execute("INSERT INTO knowledge (topic, qualifier, answer, lvl) VALUES (?, ?, ?, ?)", (top, qual, answer, pri))
-        cur.close()
-        db.commit()
+        database.add_question(get_db(), (top, qual, answer, pri))
         return redirect(url_for('show_admin'))
     return render_template('add.html')
 
@@ -190,17 +177,10 @@ def view():
 
     if request.method == 'POST':
         id = request.form['id']
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("DELETE FROM knowledge WHERE id = ?", (id,))
-        cursor.close()
-        db.commit()
+        database.delete_question_on_id(get_db(), id)
         return redirect(url_for('view'))
     else:
-        db = get_db()
-        cursor = db.execute('select * from knowledge')
-        questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
-        db.close()
+        questions = database.get_all_questions(get_db())
         return render_template('view.html', quest = questions)
 
 # allow the admin to edit an entry
@@ -215,37 +195,18 @@ def edit():
     if request.method == 'POST':
         i = request.form['id']
         top = request.form['topic']
-        if top == 'None' or top == '':
-            top = None
         q = request.form['qual']
-        if q == 'None' or q == '':
-            q = None
         ans = request.form['ans']
-        if ans == 'None' or ans == '':
-            ans = None
         lv = request.form['pl']
-        if lv == 'None' or lv == '':
-            lv = None
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('UPDATE knowledge SET topic = ?, qualifier = ?, answer = ?, lvl = ? WHERE id = ?', (top, q, ans, lv, i))
-        cursor.close()
-        db.commit()
+        database.update_question(get_db(), [top, q, ans, lv, i])
         return redirect(url_for('view'))
     else:
         id = request.args['id']
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute('select * from knowledge where id = ?', (id,))
-        row = cursor.fetchone()
-        i, t, q, an, pl = row
-        print(i, t, q, an, pl)
-        return render_template('edit.html', q = dict(ID = i, 
-                                                    TOPIC = t, 
-                                                    QUAL = q, 
-                                                    ANS = an, 
-                                                    PL = pl) 
-                            )
+        row = database.get_question_on_id(get_db(), id)
+        i, t, q, an, pl, count = row
+        q = dict(ID = i, TOPIC = t, QUAL = q, ANS = an, PL = pl, COUNT = count)
+        return render_template('edit.html', q=q)
+                            
 
 # display statistical information for the admin
 @app.route('/stats')
@@ -266,11 +227,7 @@ def addAdmin():
         un = request.form['username']
         pd = request.form['password']
         lv = request.form['level']
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("INSERT INTO users (id, pwd, lvl) VALUES (?, ?, ?)", (un, pd, lv))
-        cursor.close()
-        db.commit()
+        database.add_admin(get_db(), (un, pd, lv))
         return redirect(url_for('show_admin'))
     return render_template('addAdmin.html')
 
@@ -284,14 +241,9 @@ def viewAdmin():
     if request.method == 'POST':
         un = request.form['username']
         db = get_db()
-        cursor = db.cursor()
-        cursor.execute('DELETE FROM users WHERE id = ?', (un,))
-        cursor.close()
-        db.commit()
+        database.delete_admin(db, un)
         return redirect(url_for('viewAdmin'))
     else:
         db = get_db()
-        cursor = db.execute('select * from users')
-        users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
-        db.close()
+        users = database.get_all_admins(db)
         return render_template('viewAdmin.html', users = users)
