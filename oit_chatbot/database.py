@@ -1,4 +1,14 @@
 import sqlite3
+from datetime import datetime
+
+def add_miss(db, noun_phrases):
+    if not noun_phrases:
+        return
+    elif len(noun_phrases) == 1:
+        noun_phrases = (None, noun_phrases[0])
+
+    db.execute('''INSERT INTO unknown values(?, ?, ?)''', (datetime.now(), noun_phrases[-1], noun_phrases[-2]))
+    db.commit()
 
 def find_question(db, noun_phrases):
     """Locates relevant question in the database based on the noun phrases
@@ -16,7 +26,6 @@ def find_question(db, noun_phrases):
     """
     
     answers = []
-    print(noun_phrases)
     if not noun_phrases:
         raise LookupError('No noun phrases found')
     elif len(noun_phrases) == 1:
@@ -54,7 +63,13 @@ def add_question(db, question):
 def get_all_questions(db):
     """Returns list of tuples of all questions in DB"""
     cursor = db.execute('select * from knowledge')
-    questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4], CT = row[5]) for row in cursor.fetchall()]
+    questions = [dict(
+                    ID = row[0], 
+                    TOPIC = row[1], 
+                    QUAL = row[2], 
+                    ANS = row[3], 
+                    PL = row[4], 
+                    CT = row[5]) for row in cursor.fetchall()]
     cursor.close()
     return questions
 

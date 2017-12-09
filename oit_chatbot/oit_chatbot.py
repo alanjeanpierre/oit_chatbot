@@ -132,6 +132,7 @@ def process(txt):
         response = database.find_question(get_db(), noun_phrases)
         return response
     except LookupError as e:
+        database.add_miss(get_db(), noun_phrases)
         session['misses'] = session.get('misses', 0) + 1
         if session['misses'] == 5:
             return 'I need to transfer you to my superior, Mr. Lake'
