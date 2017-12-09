@@ -153,14 +153,17 @@ def process(txt):
 # display the admin page
 @app.route('/admin')
 def show_admin():
-    if not session['logged_in']:
-        return redirect(url_for('show_chat'))
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
     return render_template('show_admin.html')
 
 # allow admin to add new FAQ
 @app.route('/add', methods = ['GET', 'POST'])
 def add():
     """Add question to the database"""
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         top = request.form['topic']
         qual = request.form['qual']
@@ -179,6 +182,10 @@ def add():
 def view():
     """View the questions in the database"""
     """Delete questions from the database"""
+
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         id = request.form['id']
         db = get_db()
@@ -199,6 +206,10 @@ def view():
 def edit():
     """Edit a question in the knowledge database"""
     
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
+
+
     if request.method == 'POST':
         i = request.form['id']
         top = request.form['topic']
@@ -237,11 +248,18 @@ def edit():
 # display statistical information for the admin
 @app.route('/stats')
 def stats():
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
+
     return render_template('stats.html')
 
 # allow admin to add admins
 @app.route('/addAdmin', methods = ['GET', 'POST'])
 def addAdmin():
+
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
+
     if request.method == 'POST':
         un = request.form['username']
         pd = request.form['password']
@@ -257,6 +275,10 @@ def addAdmin():
 # display all admins with delete button
 @app.route('/viewAdmin', methods = ['GET', 'POST'])
 def viewAdmin():
+
+    if not session.get('logged_in', None):
+        return redirect(url_for('login'))
+    
     if request.method == 'POST':
         un = request.form['username']
         db = get_db()
