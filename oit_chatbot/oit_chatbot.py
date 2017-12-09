@@ -176,11 +176,21 @@ def add():
 @app.route('/view')
 def view():
     """View the questions in the database"""
-    db = get_db()
-    cursor = db.execute('select * from knowledge')
-    questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
-    db.close()
-    return render_template('view.html', quest = questions)
+     """Delete questions from the database"""
+    if request.method == 'POST':
+        id = request.form['id']
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("DELETE FROM knowledge WHERE id = ?", (id,))
+        cursor.close()
+        db.commit()
+        return redirect(url_for('view'))
+    else:
+        db = get_db()
+        cursor = db.execute('select * from knowledge')
+        questions = [dict(ID = row[0], TOPIC = row[1], QUAL = row[2], ANS = row[3], PL = row[4]) for row in cursor.fetchall()]
+        db.close()
+        return render_template('view.html', quest = questions)
 
 # allow the admin to remove an entry
 #@app.route('/delete', methods = ['GET', 'POST'])
@@ -250,18 +260,8 @@ def delAdmin():
 # display all admins
 @app.route('/viewAdmin', methods=['GET', 'POST'])
 def viewAdmin():
-     """Delete questions from the database"""
-    if request.method == 'POST':
-        id = request.form['id']
-        db = get_db()
-        cursor = db.cursor()
-        cursor.execute("DELETE FROM knowledge WHERE id = ?", (id,))
-        cursor.close()
-        db.commit()
-        return redirect(url_for('view'))
-    else:
-        db = get_db()
-        cursor = db.execute('select * from users')
-        users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
-        db.close()
-        return render_template('viewAdmin.html', users = users)
+    db = get_db()
+    cursor = db.execute('select * from users')
+    users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
+    db.close()
+    return render_template('viewAdmin.html', users = users)
