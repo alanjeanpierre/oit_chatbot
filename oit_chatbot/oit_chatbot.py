@@ -203,9 +203,17 @@ def edit():
     if request.method == 'POST':
         i = request.form['id']
         top = request.form['topic']
+        if top == 'None' or top == '':
+            top = None
         q = request.form['qual']
+        if q == 'None' or q == '':
+            q = None
         ans = request.form['ans']
+        if ans == 'None' or ans == '':
+            ans = None
         lv = request.form['pl']
+        if lv == 'None' or lv == '':
+            lv = None
         db = get_db()
         cursor = db.cursor()
         cursor.execute('UPDATE knowledge SET topic = ?, qualifier = ?, answer = ?, lvl = ? WHERE id = ?', (top, q, ans, lv, i))
