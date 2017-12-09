@@ -39,7 +39,7 @@ tr:nth-child(even) {
     		<td>{{ q.QUAL }} </td>
 			<td>{{ q.ANS }} </td>
     		<td>{{ q.PL }} </td>
-            <td><button action="{{ url_for('delete') }}">Klik</button></td>
+            <td><input type="button" value="Delete" onclick="{{ url_for('delete') }}"></td>
 
     	</tr>
     {% endfor %}
