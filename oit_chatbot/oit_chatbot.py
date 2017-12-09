@@ -197,6 +197,16 @@ def view():
 def edit():
     """Edit a question in the knowledge database"""
     if request.method == 'POST':
+        i = request.form['id']
+        top = request.form['topic']
+        qul = request.form['qual']
+        a = request.form['ans']
+        p = request.form['pl']
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute('UPDATE knowledge SET topic = ?, qualifier = ?, answer = ?, lvl = ? WHERE id = ?', (top, qul, a, p, i))
+        cursor.close()
+        db.commit()
         return redirect(url_for('view'))
     return render_template('edit.html')
 
