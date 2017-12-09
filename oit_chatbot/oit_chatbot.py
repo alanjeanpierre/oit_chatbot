@@ -191,6 +191,7 @@ def delete():
         qual = request.form['qual']
         answer = request.form['ans']
         pri = request.form['pl']
+
         return redirect(url_for('view'))
     return render_template('delete.html')
 
@@ -218,13 +219,25 @@ def addAdmin():
 @app.route('/delAdmin', methods = ['GET', 'POST'])
 def delAdmin():
     if request.method == 'POST':
+        un = request.form['username']
+        pd = request.form['password']
+        db = get_db()
+        cursor = db.cursor()
+        if un != None:
+            cursor.execute('DELETE FROM users WHERE id = un')
+            cursor.close()
+            db.commit()
+        elif pd != None:
+            cursor.execute('DELETE FROM users WHERE pwd = pd')
+            cursor.close()
+            db.commit()
         return redirect(url_for('viewAdmin'))
     return render_template('delAdmin.html')
 
 # display all admins
 @app.route('/viewAdmin')
 def viewAdmin():
-    db = get_db
+    db = get_db()
     cursor = db.execute('select * from users')
     users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
     db.close()
