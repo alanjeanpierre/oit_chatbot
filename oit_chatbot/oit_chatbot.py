@@ -81,6 +81,7 @@ def rudeness():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login page and login logic for the admin portal"""
+    # if someone is already logged in, redirect them to the logout page
     if session.get('logged_in', None):
         return redirect(url_for('logout'))
 
