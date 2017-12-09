@@ -192,11 +192,11 @@ def delete():
         db = get_db()
         cursor = db.cursor()
         if top != None:
-            cursor.execute('DELETE FROM knowledge WHERE topic = ?', (top))
+            cursor.execute("DELETE FROM knowledge WHERE topic = ?", (top,))
             cursor.close()
             db.commit()
         elif qual != None:
-            cursor.execute('DELETE FROM knowledge WHERE qualifier = ?', (qual))
+            cursor.execute("DELETE FROM knowledge WHERE qualifier = ?", (qual,))
             cursor.close()
             db.commit()
         return redirect(url_for('view'))
@@ -219,6 +219,14 @@ def stats():
 @app.route('/addAdmin', methods = ['GET', 'POST'])
 def addAdmin():
     if request.method == 'POST':
+        un = request.form['username']
+        pd = request.form['password']
+        lv = request.form['level']
+        db = get_db()
+        cursor = db.cursor()
+        cursor.execute("INSERT INTO users (id, pwd, lvl) VALUES (?, ?, ?)", (un, pd, lv))
+        cursor.close()
+        db.commit()
         return redirect(url_for('show_admin'))
     return render_template('addAdmin.html')
 
@@ -231,11 +239,11 @@ def delAdmin():
         db = get_db()
         cursor = db.cursor()
         if un != None:
-            cursor.execute('DELETE FROM users WHERE id = ?', (un))
+            cursor.execute("DELETE FROM users WHERE id = ?", (un,))
             cursor.close()
             db.commit()
         elif pd != None:
-            cursor.execute('DELETE FROM users WHERE pwd = ?', (pd))
+            cursor.execute("DELETE FROM users WHERE pwd = ?", (pd,))
             cursor.close()
             db.commit()
         return redirect(url_for('viewAdmin'))
