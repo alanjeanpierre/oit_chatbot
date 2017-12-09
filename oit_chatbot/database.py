@@ -10,6 +10,14 @@ def add_miss(db, noun_phrases):
     db.execute('''INSERT INTO unknown values(?, ?, ?)''', (datetime.now(), noun_phrases[-1], noun_phrases[-2]))
     db.commit()
 
+def get_all_misses(db):
+    cursor = db.execute('select topic, qualifier from unknown')
+    d = dict()
+    for row in cursor.fetchall():
+        d[row] = d.get(row, 0) + 1
+    cursor.close()
+    return d
+
 def find_question(db, noun_phrases):
     """Locates relevant question in the database based on the noun phrases
 

@@ -214,8 +214,9 @@ def edit():
 def stats():
     if not session.get('logged_in', None):
         return redirect(url_for('login'))
-
-    return render_template('stats.html')
+    
+    questions = database.get_all_misses(get_db())
+    return render_template('stats.html', quest = questions)
 
 # allow admin to add admins
 @app.route('/addAdmin', methods = ['GET', 'POST'])
