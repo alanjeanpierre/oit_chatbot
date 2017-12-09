@@ -173,7 +173,7 @@ def add():
     return render_template('add.html')
 
 # display the FAQ's in the database
-@app.route('/view')
+@app.route('/view', methods=['GET', 'POST'])
 def view():
     """View the questions in the database"""
     """Delete questions from the database"""
@@ -258,7 +258,7 @@ def delAdmin():
     return render_template('delAdmin.html')
 
 # display all admins
-@app.route('/viewAdmin', methods=['GET', 'POST'])
+@app.route('/viewAdmin')
 def viewAdmin():
     db = get_db()
     cursor = db.execute('select * from users')
