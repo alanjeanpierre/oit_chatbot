@@ -39,7 +39,7 @@ tr:nth-child(even) {
     		<td>{{ q.QUAL }} </td>
 			<td>{{ q.ANS }} </td>
     		<td>{{ q.PL }} </td>
-            <td><form action="{{ url_for('delete') }}" method="POST"><input type="hidden" id="q_id" name="id" value="{{ q.ID }}"><input type="button" value="Delete"></form></td>
+            <td><form method="POST"><input type="hidden" id="q_id" name="id" value="{{ q.ID }}"><input type="submit" value="Delete"></form></td>
 
     	</tr>
     {% endfor %}
