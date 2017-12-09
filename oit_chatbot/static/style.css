@@ -106,7 +106,7 @@ li a:hover, li a:active {
 table {
     font : 14px;
     font-family: Georgia, serif;
-    border-bottom: : 2px solid #FB8604;
+    border-bottom:2px solid #FB8604;
     border-collapse: collapse;
     width: 100%;
 }
@@ -117,7 +117,7 @@ td, th {
 }
 
 tr:hover {
-    background-color: #F7E7D4;
+    background-color: #0F2652;
 }
 
 ul{
