@@ -45,12 +45,11 @@ p, span {
 form{
     text-align: center;
     float: center;
-    background-color: #144EB8;
+    background-color: #091834;
     color: #FB8604;
     padding: 14px 16px;
     font: 14px;
     font-family: "Georgia", serif;
-    border-radius: 4px;
 }
   
 input { 
@@ -85,6 +84,7 @@ input[type=submit]:hover{
 li{
     display: inline;
     float: center;
+    font-size: 14px;
 }
   
 li a:link, li a:visited {
@@ -112,6 +112,7 @@ table {
 
 td, th {
     text-align: center;
+    border-bottom: 2px solid #FB8604;
     padding: 8px;
 }
 
