@@ -1,16 +1,44 @@
 /* CSS Document */
 body {
-    font:12px arial;
+    font:14px Georgia;
     color: #091834;
     text-align:center;
     padding:35px; 
     background-color: #F7E7D4;
 }
+
+header{
+    background-color: #091834;
+    color: #FB8604;
+    font: 18px Georgia;
+    padding: 40px;
+    text-align: left;
+}
+
+footer{
+    background-color: #FB8604;
+    color: #091834;
+    font: 12px Georgia;
+    text-align: right;
+    float: justify;
+}
+
+nav{
+    background-color: #091834;
+    color: #FB8604;
+    font: 18px Georgia;
+    padding: 40px;
+    float: center;
+    text-align: center;
+    display: inline
+}
   
 p, span {
     margin:0;
     padding:0; 
-    color: #091834}
+    color: #091834
+    background-color:#F7E7D4cd;
+}
 
 form{
     text-align: center;
