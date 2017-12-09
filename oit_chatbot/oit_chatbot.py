@@ -176,7 +176,7 @@ def add():
 @app.route('/view')
 def view():
     """View the questions in the database"""
-     """Delete questions from the database"""
+    """Delete questions from the database"""
     if request.method == 'POST':
         id = request.form['id']
         db = get_db()
