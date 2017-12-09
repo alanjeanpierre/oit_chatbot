@@ -153,10 +153,9 @@ def process(txt):
 # display the admin page
 @app.route('/admin')
 def show_admin():
-    if session.logged_in == True:
-        return render_template('show_admin.html')
-    else:
+    if not session['logged_in']:
         return redirect(url_for('show_chat'))
+    return render_template('show_admin.html')
 
 # allow admin to add new FAQ
 @app.route('/add', methods = ['GET', 'POST'])
