@@ -1,5 +1,5 @@
 drop table if exists users;
-drop table if exists logs;
+drop table if exists unknown;
 drop table if exists knowledge;
 
 -- id is username
@@ -10,10 +10,10 @@ create table users (
 	lvl int not null
 );
 
-create table logs (
+create table unknown (
 	date datetime,
-	id int,
-	lvl int
+	topic text,
+	qualifier text
 );
 
 -- topic is like, office hours
@@ -25,6 +25,7 @@ create table knowledge (
 	topic text,
     qualifier text,
     answer text,
-	lvl int -- priviledge level
+	lvl int, -- priviledge level
+	count int -- keep track of how many times a question is asked 
 );
 
