@@ -1,24 +1,53 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
-	<title>Delete A FAQ</title>
+<title>Updated Questions</title>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
 </head>
 <body>
 
-<h1>Remove a Question</h1>
-<h2>Please enter either one of them or both.</h2>
+<h1>Updated Question Table</h1>
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Topic</th>
+		<th>Qualifier</th>
+		<th>Answer</th>
+		<th>Priority Level</th>
+        <th>Remove</th>
+	</tr>
+	{% for q in quest %}
+		<tr>
+			<td>{{ q.ID }} </td>
+    		<td>{{ q.TOPIC }} </td>
+    		<td>{{ q.QUAL }} </td>
+			<td>{{ q.ANS }} </td>
+    		<td>{{ q.PL }} </td>
+            <td><form action="{{ url_for('delete') }}" method="POST"><input type="hidden" id="q_id" name="id" value="{{ q.ID }}"><input type="button" value="Delete"></form></td>
 
-<form method="POST">
-  Topic:<br>
-  <input type="text" name="topic">
-  <br>
-  Qualifier:<br>
-  <input type="text" name="qual">
-  <br><br>
-  <input type="button" value="Cancel" onclick="javascript:history.back();return false;"/>
-  <input type="submit" value="Submit">
-</form> 
-
+    	</tr>
+    {% endfor %}
+</table>
+<nav>
+    <ul>
+        <p class="chat"><a href="{{ url_for('show_admin') }}">Admin Home Page</a></p>
+    </ul>
+</nav>
 </body>
 </html>
