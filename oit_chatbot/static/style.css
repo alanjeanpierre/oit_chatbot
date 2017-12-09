@@ -1,6 +1,7 @@
 /* CSS Document */
 body {
-    font:14px Georgia;
+    font: 14px;
+    font-family: "Georgia", serif;
     color: #091834;
     text-align:center;
     padding:35px; 
@@ -10,7 +11,8 @@ body {
 header{
     background-color: #091834;
     color: #FB8604;
-    font: 18px Georgia;
+    font: 18px;
+    font-family: "Georgia", serif;
     padding: 40px;
     text-align: left;
 }
@@ -18,7 +20,8 @@ header{
 footer{
     background-color: #FB8604;
     color: #091834;
-    font: 12px Georgia;
+    font: 12px;
+    font-family: "Georgia", serif;
     text-align: right;
     float: justify;
 }
@@ -26,7 +29,8 @@ footer{
 nav{
     background-color: #091834;
     color: #FB8604;
-    font: 18px Georgia;
+    font: 14px;
+    font-family: "Georgia", serif;
     padding: 40px;
     float: center;
     text-align: center;
@@ -37,9 +41,8 @@ div {
     background-color: #F7E7D4;
     color: #091834;
     float: center;
-    font: 14px Georgia;
-    border-radius: 6px;
-    padding: 14px 16spx;
+    font: 14px;
+    font-family: "Georgia", serif;
 }
   
 p, span {
@@ -55,16 +58,16 @@ form{
     background-color: #FB8604;
     color: #144EB8;
     padding: 14px 20px;
-    border-radius: 6px;
-    font: 14px Georgia;
+    font: 14px;
+    font-family: "Georgia", serif;
 }
   
 input { 
-    font:12px Georgia;
+    font:12px;
+    font-family: "Georgia", serif;
     color: #091834; 
     margin: 10px 0;
     padding: 14px 16px;
-    border-radius: 6px;
     box-sizing: border-box; }
 
 input[type:text]:focus {
@@ -85,13 +88,30 @@ a:hover, a:active {
     text-decoration:underline; 
     background-color: #091834;
 }
+
+table {
+    font : 14px;
+    font-family: Georgia, serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 2px solid #091834;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #F7E7D4;
+}
   
 #wrapper, #loginform {
     margin:0 auto;
     padding-bottom:25px;
     background:#FB8604;
     width:504px;
-    border:1px solid #091834; }
+    border:4px solid #091834; }
   
 #loginform { padding-top:18px; }
   
@@ -105,20 +125,20 @@ a:hover, a:active {
     background:#F7E7D4;
     height:270px;
     width:430px;
-    border:1px solid #FB8604;
+    border:4px solid #FB8604;
     overflow:auto; 
     color: #091834;
 }
   
 #usermsg {
     width:395px;
-    #border:1px solid #091834; 
+    #border:4px solid #091834; 
     text-align:left;
 }
 
 #botmsg {
     widght:395px;
-    #border:1px solid #091834;
+    #border:4px solid #091834;
     text-align:right;
 }
   
