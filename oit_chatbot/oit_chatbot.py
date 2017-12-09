@@ -189,9 +189,16 @@ def delete():
     if request.method == 'POST':
         top = request.form['topic']
         qual = request.form['qual']
-        answer = request.form['ans']
-        pri = request.form['pl']
-
+        db = get_db()
+        cursor = db.cursor()
+        if top != None:
+            cursor.execute('DELETE FROM knowledge WHERE topic = ?', (top))
+            cursor.close()
+            db.commit()
+        elif qual != None:
+            cursor.execute('DELETE FROM knowledge WHERE qualifier = ?', (qual))
+            cursor.close()
+            db.commit()
         return redirect(url_for('view'))
     return render_template('delete.html')
 
@@ -224,11 +231,11 @@ def delAdmin():
         db = get_db()
         cursor = db.cursor()
         if un != None:
-            cursor.execute('DELETE FROM users WHERE id = un')
+            cursor.execute('DELETE FROM users WHERE id = ?', (un))
             cursor.close()
             db.commit()
         elif pd != None:
-            cursor.execute('DELETE FROM users WHERE pwd = pd')
+            cursor.execute('DELETE FROM users WHERE pwd = ?', (pd))
             cursor.close()
             db.commit()
         return redirect(url_for('viewAdmin'))
