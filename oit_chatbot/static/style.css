@@ -2,10 +2,10 @@
 body {
     font: 14px;
     font-family: "Georgia", serif;
-    color: #091834;
+    color: #F7E7D4;
     text-align:center;
     padding:35px; 
-    background-color: #F7E7D4;
+    background-color: #091834;
 }
 
 header{
@@ -106,12 +106,12 @@ li a:hover, li a:active {
 table {
     font : 14px;
     font-family: Georgia, serif;
+    border-bottom: : 2px solid #091834;
     border-collapse: collapse;
     width: 100%;
 }
 
 td, th {
-    border-bottom: : 2px solid #091834;
     text-align: center;
     padding: 8px;
 }
