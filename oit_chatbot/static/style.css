@@ -1,41 +1,60 @@
 /* CSS Document */
 body {
     font:12px arial;
-    color: #222;
+    color: #091834;
     text-align:center;
-    padding:35px; }
+    padding:35px; 
+    background-color: #F7E7D4;
+}
   
-form, p, span {
+p, span {
     margin:0;
     padding:0; 
-    color: #FF9900}
+    color: #091834}
+
+form{
+    text-align: center;
+    float: center;
+    background-color: #FB8604;
+    color: #144EB8;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font: 14px Georgia;
+}
   
 input { 
-    font:12px arial; 
+    font:12px Georgia;
+    color: #091834; 
     margin: 10px 0;
     padding: 14px 20px;
     border-radius: 6px;
     box-sizing: border-box; }
 
 input[type:text]:focus {
-    background-color: lightblue;
+    background-color: #1258DC;
 }
   
-a {
-    color:#0000FF;
+a:link, a:visited {
+    background-color: #F7E7D4;
+    color:#1258DC;
     text-decoration:none;
     display: inline-block;
-    padding: 14px 25px;
-    text-align: center; }
+    padding: 14px 20px;
+    text-align: center; 
+    float: center;
+}
   
-a:hover { text-decoration:underline; }
+a:hover, a:active { 
+    text-decoration:underline; 
+    background-color: #091834;
+}
   
 #wrapper, #loginform {
     margin:0 auto;
     padding-bottom:25px;
-    background:#EBF4FB;
+    background:#FB8604;
     width:504px;
-    border:1px solid #ACD8F0; }
+    border:1px solid #091834; }
   
 #loginform { padding-top:18px; }
   
@@ -46,21 +65,23 @@ a:hover { text-decoration:underline; }
     margin:0 auto;
     margin-bottom:25px;
     padding:10px;
-    background:#fff;
+    background:#F7E7D4;
     height:270px;
     width:430px;
-    border:1px solid #ACD8F0;
-    overflow:auto; }
+    border:1px solid #FB8604;
+    overflow:auto; 
+    color: #091834;
+}
   
 #usermsg {
     width:395px;
-    #border:1px solid #ACD8F0; 
+    #border:1px solid #091834; 
     text-align:left;
 }
 
 #botmsg {
     widght:395px;
-    #border:1px solid #ACD8F0;
+    #border:1px solid #091834;
     text-align:right;
 }
   

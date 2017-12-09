@@ -10,6 +10,8 @@ create table users (
 	lvl int not null
 );
 
+-- topic of unknown question
+-- qualifier of unknown question
 create table unknown (
 	date datetime,
 	topic text,
