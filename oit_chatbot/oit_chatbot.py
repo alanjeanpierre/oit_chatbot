@@ -183,24 +183,16 @@ def view():
     return render_template('view.html', quest = questions)
 
 # allow the admin to remove an entry
-@app.route('/delete', methods = ['GET', 'POST'])
+@app.route('/delete', methods = ['POST'])
 def delete():
     """Delete questions from the database"""
-    if request.method == 'POST':
-        top = request.form['topic']
-        qual = request.form['qual']
-        db = get_db()
-        cursor = db.cursor()
-        if top != None:
-            cursor.execute("DELETE FROM knowledge WHERE topic = ?", (top,))
-            cursor.close()
-            db.commit()
-        elif qual != None:
-            cursor.execute("DELETE FROM knowledge WHERE qualifier = ?", (qual,))
-            cursor.close()
-            db.commit()
-        return redirect(url_for('view'))
-    return render_template('delete.html')
+    id = request.form['value']
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("DELETE FROM knowledge WHERE id = ?", (id,))
+    cursor.close()
+    db.commit()
+    return redirect(url_for('view'))
 
 # allow the admin to edit an entry
 @app.route('/edit', methods = ['GET', 'POST'])
