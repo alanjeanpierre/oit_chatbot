@@ -244,30 +244,20 @@ def addAdmin():
         return redirect(url_for('show_admin'))
     return render_template('addAdmin.html')
 
-# allow admin to delete admins
-@app.route('/delAdmin', methods = ['GET', 'POST'])
-def delAdmin():
+# display all admins with delete button
+@app.route('/viewAdmin', methods = ['GET', 'POST'])
+def viewAdmin():
     if request.method == 'POST':
         un = request.form['username']
-        pd = request.form['password']
         db = get_db()
         cursor = db.cursor()
-        if un != None:
-            cursor.execute("DELETE FROM users WHERE id = ?", (un,))
-            cursor.close()
-            db.commit()
-        elif pd != None:
-            cursor.execute("DELETE FROM users WHERE pwd = ?", (pd,))
-            cursor.close()
-            db.commit()
+        cursor.execute('DELETE FROM users WHERE id = ?', (un,))
+        cursor.close()
+        db.commit()
         return redirect(url_for('viewAdmin'))
-    return render_template('delAdmin.html')
-
-# display all admins
-@app.route('/viewAdmin')
-def viewAdmin():
-    db = get_db()
-    cursor = db.execute('select * from users')
-    users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
-    db.close()
-    return render_template('viewAdmin.html', users = users)
+    else:
+        db = get_db()
+        cursor = db.execute('select * from users')
+        users = [dict(UN = row[0], LVL = row[2]) for row in cursor.fetchall()]
+        db.close()
+        return render_template('viewAdmin.html', users = users)

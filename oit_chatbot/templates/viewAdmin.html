@@ -26,11 +26,13 @@ tr:nth-child(even) {
 	<tr>
 		<th>Username</th>
 		<th>Level</th>
+		<th>Remove</th>
 	</tr>
 	{% for u in users %}
 		<tr>
 			<td>{{ u.UN }} </td>
 			<td>{{ u.LVL }}</td>
+			<td><form method="POST"><input type="hidden" name="username" value="{{ u.UN }}"><input type="submit" value="Delete"></form></td>
     	</tr>
     {% endfor %}
 </table>
