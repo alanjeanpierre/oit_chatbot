@@ -32,6 +32,15 @@ nav{
     text-align: center;
     display: inline
 }
+
+div {
+    background-color: #F7E7D4;
+    color: #091834;
+    float: center;
+    font: 14px Georgia;
+    border-radius: 6px;
+    padding: 14px 20px;
+}
   
 p, span {
     margin:0;
