@@ -71,8 +71,8 @@ input[type=submit] {
     width: 100%;
     background-color: #f47321;
     color: #D5D2CA;
-    margin: 10px 0;
-    padding: 14px 16px;
+    margin: 1px 1px;
+    padding: 10px 10px;
     cursor: pointer;
     border-radius: 4px;
 }
