@@ -16,15 +16,58 @@
 			<th>Topic</th>
 			<th>Qualifier</th>
 			<th>Times Referenced</th>
+			<th>Add</th>
 		</tr>
 		{% for q, ct in quest.items() %}
 			<tr>
 				<td>{{ q[0] }} </td>
 				<td>{{ q[1] }} </td>
 				<td>{{ ct }} </td>
+				<td>
+					<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+
+					<div id="id01" class="modal">
+  
+					  <form class="modal-content animate" action="{{ url_for('add') }}" method="POST">
+					    <div class="imgcontainer">
+					      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+					      <img src="img_avatar2.png" alt="Avatar" class="avatar">
+					    </div>
+
+					    <div class="container">
+					      <label><b>Topic</b></label>
+					      <input type="text" name="topic" value="{{ q[0] }}">
+
+					      <label><b>Qualifier</b></label>
+					      <input type="text" name="qual" value = "{{ q[1] }}">
+
+					      <label><b>Answer</b></label>
+					      <input type="text" placeholder="Enter Answer" name="answer" required>
+					        
+					      <button type="submit">Add</button>
+					    </div>
+
+					    <div class="container" style="background-color:#f1f1f1">
+					      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+					    </div>
+					  </form>
+					</div>
+				</td>
 			</tr>
 		{% endfor %}
 	</table>
 	</div>
+
+	<script type="text/javascript">
+		//get the modal
+		var modal = document.getElementById('id01');
+
+		//when the user click anywhere outside of the modal, close if
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
 </body>
 </html>
