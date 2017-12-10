@@ -157,8 +157,6 @@ def add():
     if not session.get('logged_in', None):
         return redirect(url_for('login'))
 
-    print("made it inside add")
-
     if request.method == 'POST':
         top = request.form['topic']
         qual = request.form['qual']

@@ -24,11 +24,11 @@
 				<td>{{ q[1] }} </td>
 				<td>{{ ct }} </td>
 				<td>
-					<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+					<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Add</button>
 
 					<div id="id01" class="modal">
   
-					  <form class="modal-content animate" action="{{ url_for('add') }}" method="POST">
+					  <form class="modal-content animate" action="{{ url_for('add') }}" method='POST'>
 					    <div class="imgcontainer">
 					      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 					      <img src="img_avatar2.png" alt="Avatar" class="avatar">
@@ -42,7 +42,7 @@
 					      <input type="text" name="qual" value = "{{ q[1] }}">
 
 					      <label><b>Answer</b></label>
-					      <input type="text" placeholder="Enter Answer" name="answer" required>
+					      <input type="text" placeholder="Enter Answer" name="ans" required>
 					        
 					      <button type="submit">Add</button>
 					    </div>

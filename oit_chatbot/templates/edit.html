@@ -10,7 +10,7 @@
 <h2>Change the Section to be Updated</h2>
 
 <p>ID: {{ q.ID }}</p>
-<form action="{{url_for('edit')}}"method="POST">
+<form action="{{url_for('edit')}}" method="POST">
   <input type="hidden" name="id" value = "{{ q.ID }}">
   Topic:<br>
   <input type="text" name="topic" value="{{ q.TOPIC }}">
