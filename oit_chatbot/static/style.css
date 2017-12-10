@@ -70,7 +70,7 @@ input[type:text]:focus {
 input[type=submit] {
     width: 100%;
     background-color: #f47321;
-    color: #D3BF96;
+    color: #D5D2CA;
     margin: 10px 0;
     padding: 14px 16px;
     cursor: pointer;
@@ -88,7 +88,7 @@ li{
   
 li a:link, li a:visited {
     background-color:#f47321;
-    color:#D3BF96;
+    color:#D5D2CA;
     text-decoration:none;
     display: inline-block;
     padding: 14px 16px;
