@@ -162,7 +162,7 @@ def add():
         qual = request.form['qual']
         answer = request.form['ans']
         pri = request.form['pl']
-        database.add_question(get_db(), (top, qual, answer, pri))
+        database.add_question(get_db(), [top, qual, answer, pri])
         return redirect(url_for('show_admin'))
     return render_template('add.html')
 

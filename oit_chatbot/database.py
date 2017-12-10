@@ -61,6 +61,10 @@ def find_question(db, noun_phrases):
 
 def add_question(db, question):
     """Adds question to database"""
+    for i, q in enumerate(question):
+        if q == 'None' or q == '':
+            question[i] = None
+            
     cur = db.cursor()
     cur.execute('''INSERT INTO knowledge (topic, qualifier, answer, lvl, count) 
                     VALUES (?, ?, ?, ?, 0)''', 
