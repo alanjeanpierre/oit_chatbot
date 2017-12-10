@@ -95,7 +95,6 @@ def login():
 
     data = {x['id'] : x['pwd'] for x in data}
 
-    print(data)
     error = None
     if request.method == 'POST':
         if not request.form['username'] in data.keys():
