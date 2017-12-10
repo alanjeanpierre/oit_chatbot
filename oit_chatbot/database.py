@@ -41,8 +41,8 @@ def find_question(db, noun_phrases):
                             (noun_phrases))
         answers = cursor.fetchone()
     else:
-        print(noun_phrases[-1])
-        print(noun_phrases[-2])
+        #print(noun_phrases[-1])
+        #print(noun_phrases[-2])
         cursor = db.execute('select id, answer, count from knowledge where topic = ? and qualifier = ?', 
                             ( noun_phrases[-1], noun_phrases[-2]) )
         answers = cursor.fetchone()
@@ -54,7 +54,7 @@ def find_question(db, noun_phrases):
     if not answers:
         raise LookupError('No answers for that question')
     else:
-        print(answers[0], answers[1], answers[2])
+        #print(answers[0], answers[1], answers[2])
         db.execute('UPDATE knowledge SET count=? WHERE id=?', (answers[2]+1, answers[0]))
         db.commit()
         return answers[1]

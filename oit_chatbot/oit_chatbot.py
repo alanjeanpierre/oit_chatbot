@@ -98,13 +98,13 @@ def login():
     error = None
     if request.method == 'POST':
         if not request.form['username'] in data.keys():
-            print('bad username')
+            #print('bad username')
             error = 'Invalid username'
         elif request.form['password'] != data[request.form['username']]:
-            print('bad password')
+            #print('bad password')
             error = 'Invalid Password'
         else:
-            print('We made it here')
+            #print('We made it here')
             session['logged_in'] = True
             session['username'] = request.form['username']
             flash('You were logged in')
