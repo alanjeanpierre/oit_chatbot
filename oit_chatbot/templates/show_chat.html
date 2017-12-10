@@ -11,6 +11,7 @@
         {% if session.get('username') %} 
             <p class="welcome">Welcome, {{ session.get('username') }}<b></b>
             <ul>
+                <li><a href="{{ url_for('logout') }} ">Logout</a></li>
                 <li><a href="{{ url_for('show_admin')}}">Home</a></li>
             </ul>
             </p>
