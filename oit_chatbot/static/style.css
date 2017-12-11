@@ -209,6 +209,7 @@ button:hover {
     width : 25%;
     float : center;
     text-align : center;
+    margin : auto;
 }
 
 #wrapper, #loginform {
