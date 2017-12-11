@@ -139,7 +139,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
 }
 
 button:hover {
@@ -205,6 +205,17 @@ button:hover {
     cursor: pointer;
 }
 
+.form-element form-button{
+    width : 50%;
+    float : center;
+    text-align : left;
+}
+
+.form-element form-field {
+    width : 50%;
+    float : center;
+    text-align : left;
+}
 
 #wrapper, #loginform {
     margin:0 auto;
