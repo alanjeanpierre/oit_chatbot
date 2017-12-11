@@ -206,9 +206,9 @@ button:hover {
 }
 
 .form-element-wrapper {
-    width : 50%;
+    width : 25%;
     float : center;
-    text-align : left;
+    text-align : center;
 }
 
 #wrapper, #loginform {
