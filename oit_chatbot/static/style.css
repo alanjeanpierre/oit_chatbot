@@ -205,13 +205,7 @@ button:hover {
     cursor: pointer;
 }
 
-.form-element form-button{
-    width : 50%;
-    float : center;
-    text-align : left;
-}
-
-.form-element form-field {
+.form-element form-element-wrapper {
     width : 50%;
     float : center;
     text-align : left;
