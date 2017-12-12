@@ -10,6 +10,16 @@ def add_miss(db, noun_phrases):
     db.execute('''INSERT INTO unknown values(?, ?, ?)''', (datetime.now(), noun_phrases[-1], noun_phrases[-2]))
     db.commit()
 
+def remove_miss(db, q):
+    if q[0] == 'None' or q[0] == '':
+        return
+
+    if q[1] == 'None' or q[1] == '':
+        db.execute('''DELETE FROM unknown WHERE topic=? AND qualifier IS NULL''', (q[0],))
+    else:
+        db.execute('''DELETE FROM unknown WHERE topic=? AND qualifier=?''', q)
+    db.commit()
+
 def get_all_misses(db):
     cursor = db.execute('select topic, qualifier from unknown')
     d = dict()

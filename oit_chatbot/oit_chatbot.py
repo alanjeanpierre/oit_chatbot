@@ -162,7 +162,9 @@ def add():
         qual = request.form['qual']
         answer = request.form['ans']
         pri = request.form['pl']
-        database.add_question(get_db(), [top, qual, answer, pri])
+        db = get_db()
+        database.add_question(db, [top, qual, answer, pri])
+        database.remove_miss(db, [top, qual])
         return redirect(url_for('show_admin'))
     return render_template('add.html')
 
@@ -215,7 +217,7 @@ def stats():
         return redirect(url_for('login'))
     
     questions = database.get_all_misses(get_db())
-    return render_template('stats.html', quest = questions)
+    return render_template('stats.html', quest = sorted(questions.items(), key=lambda q: q[1], reverse=True))
 
 # allow admin to add admins
 @app.route('/addAdmin', methods = ['GET', 'POST'])
