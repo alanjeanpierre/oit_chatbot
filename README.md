@@ -9,8 +9,12 @@ OIT Chatbot is an automated support system for UTSA's OIT department. The chatbo
 * TextBlob requires some external dependencies, you can install them with `python3 -m textblob.download_corpora lite`
 * Finally, install OIT Chatbot by running `pip3 install /path/to/oit_chatbot/`
 
+## Testing
+* `python3 -m pytest ./tests` from the root directory
+
 ## Running
 * To run OIT Chatbot, run through Flask
 * First, export the name of the application, `export FLASK_APP=oit_chatbot`
 * Then initialize the database `flask initdb`
 * Then run the application `flask run --host=0.0.0.0 --port=80` or whichever port desired
+
